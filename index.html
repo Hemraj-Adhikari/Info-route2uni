@@ -443,7 +443,25 @@
     flex-shrink: 0;
   }
 
+  /* Letter-avatar shown when logo fails */
+  .card-logo-avatar {
+    display: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    color: #fff;
+    letter-spacing: 0.02em;
+    border: 1px solid rgba(0,0,0,0.08);
+  }
+
   .card-logo-row.no-logo .card-logo { display: none; }
+  .card-logo-row.no-logo .card-logo-avatar { display: flex; }
   .card-logo-row .card-title { margin-bottom: 0; }
 
   .card-title-wrap .card-title {
@@ -3114,7 +3132,8 @@ function renderHome(){
       <div class="card-body">
         <div class="card-title-wrap">
           <div class="card-logo-row">
-            <img class="card-logo" src="https://www.google.com/s2/favicons?domain=${UNI_DOMAIN[k] || ''}&sz=128" alt="${esc(titleCased)} logo" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('no-logo')">
+            <img class="card-logo" src="https://logo.clearbit.com/${UNI_DOMAIN[k] || ''}" alt="${esc(titleCased)} logo" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('no-logo')">
+            <div class="card-logo-avatar" style="background:${colorFor(k)}">${k.replace(/ISC$/,'').replace(/[^A-Z]/g,'').slice(0,2)||k.slice(0,2).toUpperCase()}</div>
             <div class="card-title">${esc(titleCased)}</div>
           </div>
           <div class="card-title-line"></div>
